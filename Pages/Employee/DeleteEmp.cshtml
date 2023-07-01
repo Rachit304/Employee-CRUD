@@ -1,0 +1,28 @@
+﻿@page
+@using System.Data.SqlClient;
+@model Employee_CRUD.Pages.Employee.DeleteEmpModel
+@{
+
+    int id = int.Parse(Request.Query["id"]);
+
+    try
+    {
+        string connectionString = "Data Source=.;Initial Catalog=employee;Integrated Security=True";
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+            conn.Open();
+            string sql = "DELETE FROM employees WHERE empid=@id";
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+    }
+    catch (Exception e)
+    {
+
+    }
+
+    Response.Redirect("/Employee/Index");
+}

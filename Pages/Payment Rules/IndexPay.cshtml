@@ -1,0 +1,40 @@
+﻿@page
+@model Employee_CRUD.Pages.Payment_Rules.IndexPayModel
+@{
+}
+
+<br />
+<h2>
+    Payment Details
+</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Designation</th>
+            <th>Description</th>
+            <th>Amount</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listPay)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.desc</td>
+                <td>@item.amt</td>
+
+                <!--  <td>
+                       <a class="btn btn-primary btn-sm" href="/Employee/EditEmp?id=@item.id">Edit</a>
+                       <a class="btn btn-danger btn-sm" href="/Employee/DeleteEmp?id=@item.id">Delete</a>
+                       <a class="btn btn-primary btn-sm" href="/WorkHour/IndexWork?id=@item.id">Details</a>
+                   </td> -->
+            </tr>
+        }
+    </tbody>
+</table>
